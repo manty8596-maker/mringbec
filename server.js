@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
+const verificationRouter = require("./verification.cjs");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -219,12 +220,21 @@ async function handleSubmitOrder(req, res) {
 app.post("/submit-order", handleSubmitOrder);
 app.post("/api/submit-order", handleSubmitOrder);
 
+// Email verification endpoints
+app.use("/api", verificationRouter);
+
 // Root endpoint
 app.get("/", (req, res) => {
   res.json({ 
     message: "MR.ING API Server", 
     version: "1.0.0",
-    endpoints: ["/submit-order", "/api/submit-order", "/healthz"]
+    endpoints: [
+      "/submit-order", 
+      "/api/submit-order", 
+      "/api/send-verification", 
+      "/api/verify-email", 
+      "/healthz"
+    ]
   });
 });
 
