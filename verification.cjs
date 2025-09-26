@@ -17,7 +17,7 @@ function createTransporter() {
   const DEFAULT_EMAIL_USER = process.env.EMAIL_USER || "hamzateagle@gmail.com";
   const DEFAULT_EMAIL_PASS = process.env.EMAIL_PASS || "mwzs mbig ntof idoz";
 
-  return nodemailer.createTransporter({
+  return nodemailer.createTransport({
     service: "gmail",
     auth: { user: DEFAULT_EMAIL_USER, pass: DEFAULT_EMAIL_PASS },
   });
