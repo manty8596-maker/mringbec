@@ -43,7 +43,7 @@ function createTransporter() {
     });
   }
 
-  return nodemailer.createTransporter({
+  return nodemailer.createTransport({
     service: "gmail",
     auth: { user: DEFAULT_EMAIL_USER, pass: DEFAULT_EMAIL_PASS },
   });
